@@ -1,0 +1,51 @@
+spring:
+  profiles:
+    active: dev
+server:
+  port: 8081
+
+---
+
+spring:
+  config:
+    activate:
+      on-profile: deploy
+  datasource:
+    username: root
+    password: 1234
+    url: jdbc:mysql://localhost:3306/pineapple_music
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+---
+
+spring:
+  config:
+    activate:
+      on-profile: dev
+  datasource:
+    username: root
+    password: 1234
+    url: jdbc:mysql://localhost:3306/devdb
+    driver-class-name: com.mysql.cj.jdbc.Driver
+#  sql:
+#    init:
+#      mode: always
+#      schema-locations: classpath:schema-dev.sql
+logging:
+  config: classpath:logback-test.xml
+
+---
+
+spring:
+  config:
+    activate:
+      on-profile: test
+  datasource:
+    username: root
+    password: 1234
+    url: jdbc:mysql://localhost:3306/testdb
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  sql:
+    init:
+      mode: always
+      schema-locations: classpath:schema-test.sql

@@ -1,0 +1,13 @@
+server:
+  port: 3000
+spring:
+  thymeleaf:
+    cache: false
+    prefix: classpath:/templates/
+    suffix: .html
+  devtools:
+    livereload:
+      enabled: true
+    remote:
+      restart:
+        enabled: true
